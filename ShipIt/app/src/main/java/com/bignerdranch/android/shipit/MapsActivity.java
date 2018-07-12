@@ -1,7 +1,9 @@
 package com.bignerdranch.android.shipit;
 
+import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -9,6 +11,20 @@ import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
+import com.google.android.gms.maps.model.PolylineOptions;
+
+import org.apache.http.HttpEntity;
+import org.apache.http.HttpResponse;
+import org.apache.http.client.ClientProtocolException;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.impl.client.DefaultHttpClient;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.io.InputStream;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -35,22 +51,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
      * installed Google Play services and returned to the app.
      */
 
-
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
         // Add a marker in Sydney and move the camera
-        LatLng nyc = new LatLng(40, -73);
+
+        LatLng nyc = new LatLng(40.752230, -73.979976);
         mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(nyc));
+        LatLng destination = new LatLng(40.7536510007, -73.9790731694);
+        mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nyc,16));
 
         //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40, -73), 12.0f));
-    }
-    /**
 
+    }
+
+
+
+/**
     @Override
-    private double getDistanceInfo(double lat1, double lng1, String destinationAddress) {
+    public double getDistanceInfo(double lat1, double lng1, String destinationAddress) {
         StringBuilder stringBuilder = new StringBuilder();
         Double dist = 0.0;
         try {
@@ -58,7 +79,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             destinationAddress = destinationAddress.replaceAll(" ","%20");
 
             //String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + latFrom + "," + lngFrom + "&destination=" + latTo + "," + lngTo + "&mode=driving&sensor=false";
-            String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + latFrom + "," + lngFrom + "&destination=" + latTo + "," + lngTo + "&mode=driving&sensor=false";
+            String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + 40 + "," + -73 + "&destination=" + 40.7536510007 + "," + -73.9790731694 + "&mode=driving&sensor=false";
 
             HttpPost httppost = new HttpPost(url);
 
@@ -72,6 +93,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             InputStream stream = entity.getContent();
             int b;
             while ((b = stream.read()) != -1) {
+
                 stringBuilder.append((char) b);
             }
         } catch (ClientProtocolException e) {
@@ -103,5 +125,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         return dist;
     }
-     **/
+
+ **/
 }

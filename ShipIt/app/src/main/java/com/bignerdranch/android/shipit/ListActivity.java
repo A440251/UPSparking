@@ -26,7 +26,6 @@ public class ListActivity extends AppCompatActivity {
 
         });
 
-     @Override
-     public void onPush()
+
     }
 }
