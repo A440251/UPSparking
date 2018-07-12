@@ -21,8 +21,12 @@ public class ListActivity extends AppCompatActivity {
             public void onClick (View v) {
                 Intent intent =  new Intent (ListActivity.this, MapsActivity.class);
                 startActivity(intent);
+
             }
 
         });
+
+     @Override
+     public void onPush()
     }
 }
