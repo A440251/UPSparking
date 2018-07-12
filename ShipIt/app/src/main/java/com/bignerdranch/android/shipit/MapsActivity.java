@@ -1,6 +1,9 @@
 package com.bignerdranch.android.shipit;
 
+import android.Manifest;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -57,74 +60,80 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         // Add a marker in Sydney and move the camera
 
-        LatLng nyc = new LatLng(40.752230, -73.979976);
-        mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
-        LatLng destination = new LatLng(40.7536510007, -73.9790731694);
-        mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nyc,16));
+        LatLng origin = new LatLng(40.751508, -73.978373);
+        mMap.addMarker(new MarkerOptions().position(origin).title("origin"));
 
+        //LatLng destination = new LatLng(40.7536510007, -73.9790731694);
+
+       // mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
+
+        LatLng dest = new LatLng(40.753692, -73.978897);
+        mMap.addPolyline(new PolylineOptions().add(origin, dest).width(10).color(Color.RED));
+
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(origin, 16));
         //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40, -73), 12.0f));
 
     }
 
 
 
-/**
-    @Override
-    public double getDistanceInfo(double lat1, double lng1, String destinationAddress) {
-        StringBuilder stringBuilder = new StringBuilder();
-        Double dist = 0.0;
-        try {
 
-            destinationAddress = destinationAddress.replaceAll(" ","%20");
+//    @Override
+//    public double getDistanceInfo(double lat1, double lng1, String destinationAddress) {
+//        StringBuilder stringBuilder = new StringBuilder();
+//        Double dist = 0.0;
+//        try {
+//
+//            destinationAddress = destinationAddress.replaceAll(" ","%20");
+//
+//            //String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + latFrom + "," + lngFrom + "&destination=" + latTo + "," + lngTo + "&mode=driving&sensor=false";
+//            String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + 40 + "," + -73 + "&destination=" + 40.7536510007 + "," + -73.9790731694 + "&mode=driving&sensor=false";
+//
+//            HttpPost httppost = new HttpPost(url);
+//
+//            HttpClient client = new DefaultHttpClient();
+//            HttpResponse response;
+//            stringBuilder = new StringBuilder();
+//
+//
+//            response = client.execute(httppost);
+//            HttpEntity entity = response.getEntity();
+//            InputStream stream = entity.getContent();
+//            int b;
+//            while ((b = stream.read()) != -1) {
+//
+//                stringBuilder.append((char) b);
+//            }
+//        } catch (ClientProtocolException e) {
+//        } catch (IOException e) {
+//        }
+//
+//        JSONObject jsonObject = new JSONObject();
+//        try {
+//
+//            jsonObject = new JSONObject(stringBuilder.toString());
+//
+//            JSONArray array = jsonObject.getJSONArray("routes");
+//
+//            JSONObject routes = array.getJSONObject(0);
+//
+//            JSONArray legs = routes.getJSONArray("legs");
+//
+//            JSONObject steps = legs.getJSONObject(0);
+//
+//            JSONObject distance = steps.getJSONObject("distance");
+//
+//            Log.i("Distance", distance.toString());
+//            dist = Double.parseDouble(distance.getString("text").replaceAll("[^\\.0123456789]","") );
+//
+//        } catch (JSONException e) {
+//            // TODO Auto-generated catch block
+//            e.printStackTrace();
+//        }
+//
+//        return dist;
+//    }
 
-            //String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + latFrom + "," + lngFrom + "&destination=" + latTo + "," + lngTo + "&mode=driving&sensor=false";
-            String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + 40 + "," + -73 + "&destination=" + 40.7536510007 + "," + -73.9790731694 + "&mode=driving&sensor=false";
 
-            HttpPost httppost = new HttpPost(url);
-
-            HttpClient client = new DefaultHttpClient();
-            HttpResponse response;
-            stringBuilder = new StringBuilder();
-
-
-            response = client.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            InputStream stream = entity.getContent();
-            int b;
-            while ((b = stream.read()) != -1) {
-
-                stringBuilder.append((char) b);
-            }
-        } catch (ClientProtocolException e) {
-        } catch (IOException e) {
-        }
-
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-            jsonObject = new JSONObject(stringBuilder.toString());
-
-            JSONArray array = jsonObject.getJSONArray("routes");
-
-            JSONObject routes = array.getJSONObject(0);
-
-            JSONArray legs = routes.getJSONArray("legs");
-
-            JSONObject steps = legs.getJSONObject(0);
-
-            JSONObject distance = steps.getJSONObject("distance");
-
-            Log.i("Distance", distance.toString());
-            dist = Double.parseDouble(distance.getString("text").replaceAll("[^\\.0123456789]","") );
-
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return dist;
-    }
-
- **/
 }
