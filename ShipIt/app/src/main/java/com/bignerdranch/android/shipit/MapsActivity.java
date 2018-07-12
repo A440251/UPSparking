@@ -78,9 +78,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void addItems() {
 
         // Set some lat/lng coordinates to start with.
-        double lat = 40.752230;
-        double lng = -73.979976;
+     //   double lat = 40.752230;
+       // double lng = -73.979976;
+        LatLng package_1= new LatLng(40.753692, -73.978897);
+        mMap.addMarker(new MarkerOptions().position(package_1).title("Package 1"));
 
+        LatLng package_2= new LatLng(40.754344, -73.981207);
+        mMap.addMarker(new MarkerOptions().position(package_2).title("Package 2"));
+
+        LatLng package_3= new LatLng(40.754344, -73.981207);
+        mMap.addMarker(new MarkerOptions().position(package_3).title("Package 3"));
+
+        LatLng package_4= new LatLng(40.756831, -73.981185);
+        mMap.addMarker(new MarkerOptions().position(package_4).title("Package 4"));
+
+
+        /**
         // Add ten cluster items in close proximity, for purposes of this example.
         for (int i = 1; i < 4; i++) {
             double offset = i / 800d;
@@ -89,6 +102,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             MyItem offsetItem = new MyItem(lat, lng,"hello","word");
             mClusterManager.addItem(offsetItem);
         }
+
+         **/
     }
 /**
    public void setUpClusterer() { {
