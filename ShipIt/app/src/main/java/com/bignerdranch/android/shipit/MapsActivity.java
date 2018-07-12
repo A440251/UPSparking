@@ -12,6 +12,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
+import com.google.maps.android.clustering.ClusterManager;
+import com.google.maps.android.clustering.Cluster;
+import com.google.maps.android.clustering.ClusterItem;
+import com.google.maps.android.clustering.ClusterItem;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -29,6 +33,9 @@ import java.io.InputStream;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    private ClusterManager<MyItem> mClusterManager;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,9 +69,60 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng destination = new LatLng(40.7536510007, -73.9790731694);
         mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nyc,16));
+        mClusterManager = new ClusterManager<MyItem>(this, mMap);
+        mMap.setOnCameraIdleListener(mClusterManager);
+        mMap.setOnMarkerClickListener(mClusterManager);
+        addItems();
+    }
 
+    private void addItems() {
 
+        // Set some lat/lng coordinates to start with.
+        double lat = 51.5145160;
+        double lng = -0.1270060;
 
+        // Add ten cluster items in close proximity, for purposes of this example.
+        for (int i = 0; i < 10; i++) {
+            double offset = i / 60d;
+            lat = lat + offset;
+            lng = lng + offset;
+            MyItem offsetItem = new MyItem(lat, lng);
+            mClusterManager.addItem(offsetItem);
+        }
+    }
+/**
+   public void setUpClusterer() { {
+        // Position the map.
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
+
+        // Initialize the manager with the context and the map.
+        // (Activity extends context, so we can pass 'this' in the constructor.)
+        mClusterManager = new ClusterManager<MyItem>(this, mMap);
+
+        // Point the map's listeners at the listeners implemented b
+        // y the cluster
+        // manager.
+        mMap.setOnCameraIdleListener(mClusterManager);
+        mMap.setOnMarkerClickListener(mClusterManager);
+
+        // Add cluster items (markers) to the cluster manager.
+        addItems();
+    }
+       /**
+    private void addItems() {
+
+        // Set some lat/lng coordinates to start with.
+        double lat = 51.5145160;
+        double lng = -0.1270060;
+
+        // Add ten cluster items in close proximity, for purposes of this example.
+        for (int i = 0; i < 10; i++) {
+            double offset = i / 60d;
+            lat = lat + offset;
+            lng = lng + offset;
+            MyItem offsetItem = new MyItem(lat, lng);
+            mClusterManager.addItem(offsetItem);
+        }
     }
 
 
