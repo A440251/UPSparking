@@ -78,15 +78,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private void addItems() {
 
         // Set some lat/lng coordinates to start with.
-        double lat = 51.5145160;
-        double lng = -0.1270060;
+        double lat = 40.752230;
+        double lng = -73.979976;
 
         // Add ten cluster items in close proximity, for purposes of this example.
-        for (int i = 0; i < 10; i++) {
-            double offset = i / 60d;
+        for (int i = 1; i < 4; i++) {
+            double offset = i / 800d;
             lat = lat + offset;
             lng = lng + offset;
-            MyItem offsetItem = new MyItem(lat, lng);
+            MyItem offsetItem = new MyItem(lat, lng,"hello","word");
             mClusterManager.addItem(offsetItem);
         }
     }
