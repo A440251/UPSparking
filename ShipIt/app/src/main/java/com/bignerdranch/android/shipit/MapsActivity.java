@@ -21,20 +21,27 @@ import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
 import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
+import org.apache.http.util.EntityUtils;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.util.ArrayList;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private ClusterManager<MyItem> mClusterManager;
-
 
 
     @Override
@@ -63,141 +70,38 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
 
-
         LatLng nyc = new LatLng(40.752230, -73.979976);
         mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
         LatLng destination = new LatLng(40.7536510007, -73.9790731694);
         mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nyc,16));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nyc, 16));
         mClusterManager = new ClusterManager<MyItem>(this, mMap);
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
         addItems();
+        System.out.println(getJson());
     }
 
     private void addItems() {
 
         // Set some lat/lng coordinates to start with.
-     //   double lat = 40.752230;
-       // double lng = -73.979976;
-        LatLng package_1= new LatLng(40.753692, -73.978897);
+        //   double lat = 40.752230;
+        // double lng = -73.979976;
+        LatLng package_1 = new LatLng(40.753692, -73.978897);
         mMap.addMarker(new MarkerOptions().position(package_1).title("Package 1"));
 
-        LatLng package_2= new LatLng(40.754344, -73.981207);
+        LatLng package_2 = new LatLng(40.754344, -73.981207);
         mMap.addMarker(new MarkerOptions().position(package_2).title("Package 2"));
 
-        LatLng package_3= new LatLng(40.754344, -73.981207);
+        LatLng package_3 = new LatLng(40.754344, -73.981207);
         mMap.addMarker(new MarkerOptions().position(package_3).title("Package 3"));
 
-        LatLng package_4= new LatLng(40.756831, -73.981185);
+        LatLng package_4 = new LatLng(40.756831, -73.981185);
         mMap.addMarker(new MarkerOptions().position(package_4).title("Package 4"));
 
 
-        /**
-        // Add ten cluster items in close proximity, for purposes of this example.
-        for (int i = 1; i < 4; i++) {
-            double offset = i / 800d;
-            lat = lat + offset;
-            lng = lng + offset;
-            MyItem offsetItem = new MyItem(lat, lng,"hello","word");
-            mClusterManager.addItem(offsetItem);
-        }
-
-         **/
-    }
-/**
-   public void setUpClusterer() { {
-        // Position the map.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
-
-        // Initialize the manager with the context and the map.
-        // (Activity extends context, so we can pass 'this' in the constructor.)
-        mClusterManager = new ClusterManager<MyItem>(this, mMap);
-
-        // Point the map's listeners at the listeners implemented b
-        // y the cluster
-        // manager.
-        mMap.setOnCameraIdleListener(mClusterManager);
-        mMap.setOnMarkerClickListener(mClusterManager);
-
-        // Add cluster items (markers) to the cluster manager.
-        addItems();
-    }
-       /**
-    private void addItems() {
-
-        // Set some lat/lng coordinates to start with.
-        double lat = 51.5145160;
-        double lng = -0.1270060;
-
-        // Add ten cluster items in close proximity, for purposes of this example.
-        for (int i = 0; i < 10; i++) {
-            double offset = i / 60d;
-            lat = lat + offset;
-            lng = lng + offset;
-            MyItem offsetItem = new MyItem(lat, lng);
-            mClusterManager.addItem(offsetItem);
-        }
     }
 
-
-
-/**
-    @Override
-    public double getDistanceInfo(double lat1, double lng1, String destinationAddress) {
-        StringBuilder stringBuilder = new StringBuilder();
-        Double dist = 0.0;
-        try {
-
-            destinationAddress = destinationAddress.replaceAll(" ","%20");
-
-            //String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + latFrom + "," + lngFrom + "&destination=" + latTo + "," + lngTo + "&mode=driving&sensor=false";
-            String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + 40 + "," + -73 + "&destination=" + 40.7536510007 + "," + -73.9790731694 + "&mode=driving&sensor=false";
-
-            HttpPost httppost = new HttpPost(url);
-
-            HttpClient client = new DefaultHttpClient();
-            HttpResponse response;
-            stringBuilder = new StringBuilder();
-
-
-            response = client.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            InputStream stream = entity.getContent();
-            int b;
-            while ((b = stream.read()) != -1) {
-
-                stringBuilder.append((char) b);
-            }
-        } catch (ClientProtocolException e) {
-        } catch (IOException e) {
-        }
-
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-            jsonObject = new JSONObject(stringBuilder.toString());
-
-            JSONArray array = jsonObject.getJSONArray("routes");
-
-            JSONObject routes = array.getJSONObject(0);
-
-            JSONArray legs = routes.getJSONArray("legs");
-
-            JSONObject steps = legs.getJSONObject(0);
-
-            JSONObject distance = steps.getJSONObject("distance");
-
-            Log.i("Distance", distance.toString());
-            dist = Double.parseDouble(distance.getString("text").replaceAll("[^\\.0123456789]","") );
-
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return dist;
-    }
-
- **/
+    private String getJson(){
+        JSONObject json = {
 }
