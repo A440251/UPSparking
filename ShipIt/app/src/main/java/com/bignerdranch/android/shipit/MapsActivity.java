@@ -30,6 +30,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -103,5 +104,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
 
     private String getJson(){
-        JSONObject json = {
-}
+        JSONObject jsonobj = new JSONObject();
+
+
+    }
+
+    }
+
+
