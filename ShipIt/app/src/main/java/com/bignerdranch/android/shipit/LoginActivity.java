@@ -3,6 +3,7 @@ package com.bignerdranch.android.shipit;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.annotation.NonNull;
 
@@ -39,6 +40,8 @@ import static android.Manifest.permission.READ_CONTACTS;
  */
 public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
+    //Buttons
+    private Button button_login;
     /**
      * Id to identity READ_CONTACTS permission request.
      */
@@ -61,6 +64,14 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+
+    /**
+     *
+     *
+     *
+     *
+     */
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -88,6 +99,17 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             public void onClick(View view) {
                 attemptLogin();
             }
+        });
+
+
+        button_login= (Button) findViewById(R.id.button_login);
+        button_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                Intent intent =  new Intent (LoginActivity.this, ListActivity.class);
+                startActivity(intent);
+            }
+
         });
 
         mLoginFormView = findViewById(R.id.login_form);
