@@ -94,16 +94,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         });
 
         Button mEmailSignInButton = (Button) findViewById(R.id.email_sign_in_button);
-        mEmailSignInButton.setOnClickListener(new OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                attemptLogin();
-            }
-        });
-
-
-        button_login= (Button) findViewById(R.id.button_login);
-        button_login.setOnClickListener(new View.OnClickListener() {
+        mEmailSignInButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v) {
                 Intent intent =  new Intent (LoginActivity.this, ListActivity.class);
@@ -209,12 +200,20 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     private boolean isEmailValid(String email) {
         //TODO: Replace this with your own logic
-        return email.contains("@");
+        if(email == "driver@ups.com"){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     private boolean isPasswordValid(String password) {
         //TODO: Replace this with your own logic
-        return password.length() > 4;
+        if(password == "UPSrocks!"){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     /**
