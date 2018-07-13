@@ -41,7 +41,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private ClusterManager<MyItem> mClusterManager;
 
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -68,16 +67,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
 
 
-
-
         LatLng nyc = new LatLng(40.752220, -73.979976);
-        LatLng views = new LatLng(40.754344,-73.981207);
+        LatLng views = new LatLng(40.754344, -73.981207);
 
         // mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
         // LatLng destination = new LatLng(40.7536510007, -73.9790731694);
         mMap.addMarker(new MarkerOptions().position(nyc).title("Package 1").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
         // mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(views,16));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(views, 16));
         mClusterManager = new ClusterManager<MyItem>(this, mMap);
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
@@ -119,28 +116,58 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //LatLng package_1= new LatLng(40.753692, -73.978897);
         //  mMap.addMarker(new MarkerOptions().position(package_1).title("Package 1").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
-        LatLng package_2= new LatLng(40.753484, -73.978770);
+        LatLng package_2 = new LatLng(40.753484, -73.978770);
         mMap.addMarker(new MarkerOptions().position(package_2).title("Package 2").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
-        LatLng package_3= new LatLng(40.754344, -73.981207);
+        LatLng package_3 = new LatLng(40.754344, -73.981207);
         mMap.addMarker(new MarkerOptions().position(package_3).title("Package 3").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
-        LatLng package_4= new LatLng(40.756831, -73.981185);
+        LatLng package_4 = new LatLng(40.756831, -73.981185);
         mMap.addMarker(new MarkerOptions().position(package_4).title("Package 4").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
-
 
 
     }
 
     private void addSpots() {
-        LatLng spot_1= new LatLng(40.7536510007, -73.9790731694);
-        mMap.addMarker(new MarkerOptions().position(spot_1).title("parking spot 2 ").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+        LatLng spot_1 = new LatLng(40.7536510007, -73.9790731694);
+        mMap.addMarker(new MarkerOptions().position(spot_1).title("meter no: 1433288").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
 
-        LatLng spot_2= new LatLng(40.7535520359, -73.9790867782);
-        mMap.addMarker(new MarkerOptions().position(spot_2).title("parking spot 2 ").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+        LatLng spot_2 = new LatLng(40.7535520359, -73.9790867782);
+        mMap.addMarker(new MarkerOptions().position(spot_2).title("meter_no:1433287").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
 
-        LatLng spot_3= new LatLng(40.7537125871, -73.9794677963);
-        mMap.addMarker(new MarkerOptions().position(spot_3).title("parking spot 2 ").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+        LatLng spot_3 = new LatLng(40.7537125871, -73.9794677963);
+        mMap.addMarker(new MarkerOptions().position(spot_3).title("meter_no:1433290").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+/** Second Spot*/
+        LatLng spot_4 = new LatLng(40.7542823837, -73.9808423412);
+        mMap.addMarker(new MarkerOptions().position(spot_4).title("meter no: 1433288").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+        LatLng spot_5 = new LatLng(40.7544099616, -73.9808676886);
+        mMap.addMarker(new MarkerOptions().position(spot_5).title("meter_no:1433050").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+        LatLng spot_6 = new LatLng(40.7544847459, -73.9813176076);
+        mMap.addMarker(new MarkerOptions().position(spot_6).title("meter_no:1433052").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+/**   Third Spot      */
+        LatLng spot_7 = new LatLng(40.7546812012, -73.9815139631);
+        mMap.addMarker(new MarkerOptions().position(spot_7).title("meter_no:1433049").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+        LatLng spot_8 = new LatLng(40.7571032699, -73.981697671);
+        mMap.addMarker(new MarkerOptions().position(spot_8).title("meter_no:1433027").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+        LatLng spot_9 = new LatLng(40.7568464016, -73.9810778427);
+        mMap.addMarker(new MarkerOptions().position(spot_9).title("meter_no:1433050").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+        LatLng spot_10 = new LatLng(40.7569676287, -73.981117885);
+        mMap.addMarker(new MarkerOptions().position(spot_10).title("meter_no:1433021").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+/** First Spot */
+
+        LatLng spot_11 = new LatLng(40.7522277202, -73.9800947458);
+        mMap.addMarker(new MarkerOptions().position(spot_11).title("\n" +
+                "meter_no:1443962").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+        LatLng spot_12 = new LatLng(40.7525223346, -73.9795878724
+        );
+        mMap.addMarker(new MarkerOptions().position(spot_12).title("meter_no:1433287").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+
     }
-
 }
