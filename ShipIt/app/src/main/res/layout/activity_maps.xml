@@ -60,6 +60,7 @@ android:padding="4dp" >
         android:id="@+id/VerticalLine_2"
         android:layout_width="1dip"
         android:layout_height="match_parent"
+        android:textColor="#FCB900"
         android:background="#aaa" />
 
 
