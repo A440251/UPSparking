@@ -221,54 +221,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
-/**
 
-        public void onRadioButtonClicked() {
-            settings.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    if (_checkedId == R.id.radioBack) {
-                        Intent intent = new Intent(this, ListActivity.class);
-                    }
-                    else if (_checkedId == R.id.radioFlag) {
-                        Intent intent = new Intent(this, ListActivity.class);
-                        startActivity(intent);
-                    }
-                    else if (_checkedId == R.id.radioNext) {
-                        Intent intent = new Intent(this, ListActivity.class);
-                    }
-                }
-**/
-                /**
-                    boolean checked = ((RadioButton) view).isChecked();
-
-                    switch(view.getId()) {
-                        case R.id.radioBack:
-                            if (checked) {
-                                Intent intent = new Intent(this, ListActivity.class);
-                                startActivity(intent);
-
-                            }
-                            break;
-                        case R.id.radioFlag:
-                            if (checked) {
-                                Intent intent = new Intent(this, ListActivity.class);
-                                startActivity(intent);
-
-                            }
-                            break;
-                        case R.id.radioNext:
-                            if (checked) {
-
-                                Intent intent = new Intent(this, ListActivity.class);
-                                startActivity(intent);
-
-                            }
-                                break;
-                    }
-
-
-        **/
 
 
     }
