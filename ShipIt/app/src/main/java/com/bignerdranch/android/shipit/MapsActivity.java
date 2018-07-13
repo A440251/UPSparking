@@ -69,13 +69,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
-        LatLng nyc = new LatLng(40.752230, -73.979976);
+        LatLng nyc = new LatLng(40.752220, -73.979976);
+        LatLng views = new LatLng(40.754344,-73.981207);
 
-        mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
-        LatLng destination = new LatLng(40.7536510007, -73.9790731694);
-
-        mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nyc,16));
+       // mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
+       // LatLng destination = new LatLng(40.7536510007, -73.9790731694);
+        mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B ").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
+       // mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(views,16));
         mClusterManager = new ClusterManager<MyItem>(this, mMap);
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
@@ -115,17 +116,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         // Set some lat/lng coordinates to start with.
      //   double lat = 40.752230;
        // double lng = -73.979976;
-        LatLng package_1= new LatLng(40.753692, -73.978897);
-        mMap.addMarker(new MarkerOptions().position(package_1).title("Package 1"));
+        //LatLng package_1= new LatLng(40.753692, -73.978897);
+      //  mMap.addMarker(new MarkerOptions().position(package_1).title("Package 1").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
-        LatLng package_2= new LatLng(40.754344, -73.981207);
-        mMap.addMarker(new MarkerOptions().position(package_2).title("Package 2"));
+        LatLng package_2= new LatLng(40.753484, -73.978770);
+        mMap.addMarker(new MarkerOptions().position(package_2).title("Package 2").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
         LatLng package_3= new LatLng(40.754344, -73.981207);
-        mMap.addMarker(new MarkerOptions().position(package_3).title("Package 3"));
+        mMap.addMarker(new MarkerOptions().position(package_3).title("Package 3").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
         LatLng package_4= new LatLng(40.756831, -73.981185);
-        mMap.addMarker(new MarkerOptions().position(package_4).title("Package 4"));
+        mMap.addMarker(new MarkerOptions().position(package_4).title("Package 4").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
 
 
