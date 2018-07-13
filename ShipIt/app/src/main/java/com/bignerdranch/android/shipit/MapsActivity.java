@@ -137,26 +137,26 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Circle currentLoc = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.752220, -73.979976))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
 
         Circle nextLoc = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.7521408, -73.9797825))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc.setVisible(false);
 
         Circle nextLoc2 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.7528072, -73.97927019999997))
-                .radius(10)
+                .radius(15)
                 .fillColor(Color.BLUE));
         nextLoc2.setVisible(false);
 
         Circle nextLoc3 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.753484, -73.978770))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc3.setVisible(false);
@@ -164,42 +164,42 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Circle nextLoc4 =  mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.75415199603125, -73.98040234749897))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc4.setVisible(false);
 
         Circle nextLoc5 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.754420, -73.981055))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc5.setVisible(false);
 
         Circle nextLoc6 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.75549347386774, -73.98359417622669))
-                .radius(7)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc6.setVisible(false);
 
         Circle nextLoc7 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.7561183027969, -73.98314356511219))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc7.setVisible(false);
 
         Circle nextLoc8 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.75675297295136, -73.982698318416))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc8.setVisible(false);
 
         Circle nextLoc9 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.757378746314096, -73.98223161404741))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc9.setVisible(false);
@@ -207,7 +207,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Circle nextLoc10 = mMap.addCircle(new CircleOptions()
                 .center(new LatLng(40.75706136569319, -73.98144274973754))
-                .radius(10)
+                .radius(15)
                 .strokeColor(Color.RED)
                 .fillColor(Color.BLUE));
         nextLoc10.setVisible(false);
