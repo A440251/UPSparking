@@ -32,12 +32,12 @@ public class ListActivity extends AppCompatActivity {
 
         button_radius = (Button) findViewById(R.id.button_radius);
         button_radius.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick (View v) {
-                Intent intent =  new Intent (ListActivity.this, MapsActivity.class);
-                startActivity(intent);
+                @Override
+                public void onClick (View v) {
+                    Intent intent =  new Intent (ListActivity.this, MapsActivity.class);
+                    startActivity(intent);
 
-            }
+                }
 
 
 

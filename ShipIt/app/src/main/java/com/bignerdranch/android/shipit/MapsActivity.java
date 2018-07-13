@@ -1,11 +1,17 @@
 package com.bignerdranch.android.shipit;
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
+import android.media.audiofx.BassBoost;
+import android.provider.Settings;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,6 +45,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private ClusterManager<MyItem> mClusterManager;
+    String str;
+    private Button button_radius;
 
 
     @Override
@@ -49,18 +57,21 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+        button_radius = (RadioButton) findViewById(R.id.radioBack);
+        button_radius.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                Intent intent =  new Intent (MapsActivity.this, ListActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
     }
 
 
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -106,7 +117,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addPolyline(new PolylineOptions().add(leg6, leg7).width(10).color(Color.RED));
 
         addSpots();
+
+
     }
+
 
     private void addItems() {
 
@@ -170,4 +184,57 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
     }
-}
+/**
+
+        public void onRadioButtonClicked() {
+            settings.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (_checkedId == R.id.radioBack) {
+                        Intent intent = new Intent(this, ListActivity.class);
+                    }
+                    else if (_checkedId == R.id.radioFlag) {
+                        Intent intent = new Intent(this, ListActivity.class);
+                        startActivity(intent);
+                    }
+                    else if (_checkedId == R.id.radioNext) {
+                        Intent intent = new Intent(this, ListActivity.class);
+                    }
+                }
+**/
+                /**
+                    boolean checked = ((RadioButton) view).isChecked();
+
+                    switch(view.getId()) {
+                        case R.id.radioBack:
+                            if (checked) {
+                                Intent intent = new Intent(this, ListActivity.class);
+                                startActivity(intent);
+
+                            }
+                            break;
+                        case R.id.radioFlag:
+                            if (checked) {
+                                Intent intent = new Intent(this, ListActivity.class);
+                                startActivity(intent);
+
+                            }
+                            break;
+                        case R.id.radioNext:
+                            if (checked) {
+
+                                Intent intent = new Intent(this, ListActivity.class);
+                                startActivity(intent);
+
+                            }
+                                break;
+                    }
+
+
+        **/
+
+
+    }
+
+
+
