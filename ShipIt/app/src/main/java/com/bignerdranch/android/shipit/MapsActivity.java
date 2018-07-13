@@ -74,7 +74,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
        // mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
        // LatLng destination = new LatLng(40.7536510007, -73.9790731694);
-        mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B ").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
+        mMap.addMarker(new MarkerOptions().position(nyc).title("Package 1").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
        // mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(views,16));
         mClusterManager = new ClusterManager<MyItem>(this, mMap);
@@ -143,98 +143,5 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
          **/
     }
-/**
-   public void setUpClusterer() { {
-        // Position the map.
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(51.503186, -0.126446), 10));
 
-        // Initialize the manager with the context and the map.
-        // (Activity extends context, so we can pass 'this' in the constructor.)
-        mClusterManager = new ClusterManager<MyItem>(this, mMap);
-
-        // Point the map's listeners at the listeners implemented b
-        // y the cluster
-        // manager.
-        mMap.setOnCameraIdleListener(mClusterManager);
-        mMap.setOnMarkerClickListener(mClusterManager);
-
-        // Add cluster items (markers) to the cluster manager.
-        addItems();
-    }
-       /**
-    private void addItems() {
-
-        // Set some lat/lng coordinates to start with.
-        double lat = 51.5145160;
-        double lng = -0.1270060;
-
-        // Add ten cluster items in close proximity, for purposes of this example.
-        for (int i = 0; i < 10; i++) {
-            double offset = i / 60d;
-            lat = lat + offset;
-            lng = lng + offset;
-            MyItem offsetItem = new MyItem(lat, lng);
-            mClusterManager.addItem(offsetItem);
-        }
-    }
-
-
-
-/**
-    @Override
-    public double getDistanceInfo(double lat1, double lng1, String destinationAddress) {
-        StringBuilder stringBuilder = new StringBuilder();
-        Double dist = 0.0;
-        try {
-
-            destinationAddress = destinationAddress.replaceAll(" ","%20");
-
-            //String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + latFrom + "," + lngFrom + "&destination=" + latTo + "," + lngTo + "&mode=driving&sensor=false";
-            String url = "http://maps.googleapis.com/maps/api/directions/json?origin=" + 40 + "," + -73 + "&destination=" + 40.7536510007 + "," + -73.9790731694 + "&mode=driving&sensor=false";
-
-            HttpPost httppost = new HttpPost(url);
-
-            HttpClient client = new DefaultHttpClient();
-            HttpResponse response;
-            stringBuilder = new StringBuilder();
-
-
-            response = client.execute(httppost);
-            HttpEntity entity = response.getEntity();
-            InputStream stream = entity.getContent();
-            int b;
-            while ((b = stream.read()) != -1) {
-
-                stringBuilder.append((char) b);
-            }
-        } catch (ClientProtocolException e) {
-        } catch (IOException e) {
-        }
-
-        JSONObject jsonObject = new JSONObject();
-        try {
-
-            jsonObject = new JSONObject(stringBuilder.toString());
-
-            JSONArray array = jsonObject.getJSONArray("routes");
-
-            JSONObject routes = array.getJSONObject(0);
-
-            JSONArray legs = routes.getJSONArray("legs");
-
-            JSONObject steps = legs.getJSONObject(0);
-d
-
-            Log.i("Distance", distance.toString());
-            dist = Double.parseDouble(distance.getString("text").replaceAll("[^\\.0123456789]","") );
-
-        } catch (JSONException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-
-        return dist;
-    }
-
- **/
 }
