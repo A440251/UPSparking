@@ -33,6 +33,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Button button_back;
     private Button button_next;
     private Button button_flag;
+    private int incrementer;
 
 
     @Override
@@ -56,14 +57,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         });
 
-
+        incrementer = 0;
         button_next= (RadioButton) findViewById(R.id.radioNext);
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v) {
-
-                LatLng zoom_2 = new LatLng(40.754344, -73.981207);
-                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom_2, 18));
+                if(incrementer == 0){
+                    LatLng zoom = new LatLng(40.753484, -73.978770);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom, 18));
+                }
+                if(incrementer == 1){
+                    LatLng zoom = new LatLng(40.754344, -73.981207);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom, 18));
+                }
+                else if(incrementer == 2) {
+                    LatLng zoom = new LatLng(40.756831, -73.981185);
+                    mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom, 18));
+                }
+                incrementer++;
+                new android.os.Handler().postDelayed(
+                        new Runnable() {
+                            public void run() {
+                                LatLng views = new LatLng(40.754344, -73.981207);
+                                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(views, 16));
+                            }
+                        },
+                        5000);
 
 
             }
@@ -217,29 +236,29 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         moveCircle(arr,0,3000);
         moveCircle(arr, 1, 6000);
         moveCircle(arr, 2, 9000);
-        moveCircle(arr,3,12000);
-        moveCircle(arr,4,15000);
-        moveCircle(arr,5,18000);
-        moveCircle(arr,6,21000);
-        moveCircle(arr,7,24000);
-        moveCircle(arr,8,27000);
-        moveCircle(arr,9,30000);
+        moveCircle(arr,3,19000);
+        moveCircle(arr,4,22000);
+        moveCircle(arr,5,32000);
+        moveCircle(arr,6,35000);
+        moveCircle(arr,7,38000);
+        moveCircle(arr,8,41000);
+        moveCircle(arr,9,44000);
 
 
 
     }
     private void moveCircle(final Circle circle[], final int index, final int delay){
-
         new android.os.Handler().postDelayed(
-                new Runnable() {
-                    public void run() {
-                        circle[index].setVisible(false);
-                        circle[index+1].setVisible(true);
-                    }
-                },
-                delay);
-
+                    new Runnable() {
+                        public void run() {
+                            circle[index].setVisible(false);
+                            circle[index + 1].setVisible(true);
+                        }
+                    },
+                    delay);
     }
+
+
 
 
 
