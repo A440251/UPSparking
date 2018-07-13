@@ -46,7 +46,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     private ClusterManager<MyItem> mClusterManager;
     String str;
-    private Button button_radius;
+    private Button button_back;
+    private Button button_next;
+    private Button button_flag;
 
 
     @Override
@@ -59,8 +61,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
 
 
-        button_radius = (RadioButton) findViewById(R.id.radioBack);
-        button_radius.setOnClickListener(new View.OnClickListener() {
+        button_back = (RadioButton) findViewById(R.id.radioBack);
+        button_back.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v) {
                 Intent intent =  new Intent (MapsActivity.this, ListActivity.class);
@@ -69,6 +71,32 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
 
         });
+
+
+        button_next= (RadioButton) findViewById(R.id.radioNext);
+        button_next.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                Intent intent =  new Intent (MapsActivity.this, ListActivity.class);
+                startActivity(intent);
+
+            }
+
+        });
+
+        button_flag= (RadioButton) findViewById(R.id.radioFlag);
+        button_flag.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick (View v) {
+                LatLng zoom = new LatLng(40.754344, -73.981207);
+
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom, 18));
+
+            }
+
+        });
+
+
     }
 
 
