@@ -1,5 +1,7 @@
 package com.bignerdranch.android.shipit;
 
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -9,6 +11,8 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptor;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
@@ -64,15 +68,46 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
+
         LatLng nyc = new LatLng(40.752230, -73.979976);
+
         mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
         LatLng destination = new LatLng(40.7536510007, -73.9790731694);
+
         mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(nyc,16));
         mClusterManager = new ClusterManager<MyItem>(this, mMap);
         mMap.setOnCameraIdleListener(mClusterManager);
         mMap.setOnMarkerClickListener(mClusterManager);
         addItems();
+
+        LatLng leg1 = new LatLng(40.7521408, -73.9797825);
+        mMap.addPolyline(new PolylineOptions().add(nyc, leg1).width(10).color(Color.RED));
+
+        LatLng leg2 = new LatLng(40.7534871, -73.9787662);
+        mMap.addPolyline(new PolylineOptions().add(leg1, leg2).width(10).color(Color.RED));
+
+
+        LatLng leg3 = new LatLng(40.75357109999999, -73.9789856);
+        mMap.addPolyline(new PolylineOptions().add(leg2, leg3).width(10).color(Color.RED));
+
+
+        LatLng leg4 = new LatLng(40.7544636, -73.9811194);
+        mMap.addPolyline(new PolylineOptions().add(leg3, leg4).width(10).color(Color.RED));
+
+
+        LatLng leg5 = new LatLng(40.7555096, -73.98361179999999);
+        mMap.addPolyline(new PolylineOptions().add(leg4, leg5).width(10).color(Color.RED));
+
+
+        LatLng leg6 = new LatLng(40.7573938, -73.98225029999999);
+        mMap.addPolyline(new PolylineOptions().add(leg5, leg6).width(10).color(Color.RED));
+
+
+        LatLng leg7 = new LatLng(40.7569175, -73.98112180000001);
+        mMap.addPolyline(new PolylineOptions().add(leg6, leg7).width(10).color(Color.RED));
+
+
     }
 
     private void addItems() {
@@ -91,6 +126,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         LatLng package_4= new LatLng(40.756831, -73.981185);
         mMap.addMarker(new MarkerOptions().position(package_4).title("Package 4"));
+
+
 
 
         /**
@@ -185,8 +222,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             JSONArray legs = routes.getJSONArray("legs");
 
             JSONObject steps = legs.getJSONObject(0);
-
-            JSONObject distance = steps.getJSONObject("distance");
+d
 
             Log.i("Distance", distance.toString());
             dist = Double.parseDouble(distance.getString("text").replaceAll("[^\\.0123456789]","") );
