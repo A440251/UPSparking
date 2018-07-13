@@ -1,38 +1,23 @@
 package com.bignerdranch.android.shipit;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
-import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.v4.app.FragmentActivity;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
-import com.google.android.gms.maps.model.BitmapDescriptor;
 import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.Circle;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.maps.model.PolylineOptions;
 import com.google.maps.android.clustering.ClusterManager;
-import com.google.maps.android.clustering.Cluster;
-import com.google.maps.android.clustering.ClusterItem;
-import com.google.maps.android.clustering.ClusterItem;
 
-import org.apache.http.HttpEntity;
-import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.impl.client.DefaultHttpClient;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
+import java.util.concurrent.TimeUnit;
 
-import java.io.IOException;
-import java.io.InputStream;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -109,7 +94,116 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addPolyline(new PolylineOptions().add(leg6, leg7).width(10).color(Color.RED));
 
 
+
+
+
+
+        Circle currentLoc = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.752220, -73.979976))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+
+        Circle nextLoc = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.7521408, -73.9797825))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc.setVisible(false);
+
+        Circle nextLoc2 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.7528072, -73.97927019999997))
+                .radius(7)
+                .fillColor(Color.BLUE));
+        nextLoc2.setVisible(false);
+
+        Circle nextLoc3 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.753484, -73.978770))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc3.setVisible(false);
+
+
+        Circle nextLoc4 =  mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.75415199603125, -73.98040234749897))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc4.setVisible(false);
+
+        Circle nextLoc5 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.754420, -73.981055))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc5.setVisible(false);
+
+        Circle nextLoc6 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.75549347386774, -73.98359417622669))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc6.setVisible(false);
+
+        Circle nextLoc7 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.7561183027969, -73.98314356511219))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc7.setVisible(false);
+
+        Circle nextLoc8 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.75675297295136, -73.982698318416))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc8.setVisible(false);
+
+        Circle nextLoc9 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.757378746314096, -73.98223161404741))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc9.setVisible(false);
+
+
+        Circle nextLoc10 = mMap.addCircle(new CircleOptions()
+                .center(new LatLng(40.75706136569319, -73.98144274973754))
+                .radius(7)
+                .strokeColor(Color.RED)
+                .fillColor(Color.BLUE));
+        nextLoc10.setVisible(false);
+
+
+        Circle[] arr = {currentLoc,nextLoc,nextLoc2,nextLoc3,nextLoc4,nextLoc5,nextLoc6,nextLoc7,nextLoc8,nextLoc9,nextLoc10};
+        moveCircle(arr,0,3000);
+        moveCircle(arr, 1, 6000);
+        moveCircle(arr, 2, 9000);
+        moveCircle(arr,3,12000);
+        moveCircle(arr,4,15000);
+        moveCircle(arr,5,18000);
+        moveCircle(arr,6,21000);
+        moveCircle(arr,7,24000);
+        moveCircle(arr,8,27000);
+        moveCircle(arr,9,30000);
+
+
+
     }
+    private void moveCircle(final Circle circle[], final int index, final int delay){
+
+        new android.os.Handler().postDelayed(
+                new Runnable() {
+                    public void run() {
+                        circle[index].setVisible(false);
+                        circle[index+1].setVisible(true);
+                    }
+                },
+                delay);
+
+    }
+
 
     private void addItems() {
 
