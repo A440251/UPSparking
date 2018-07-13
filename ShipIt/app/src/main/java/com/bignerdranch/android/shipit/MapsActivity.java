@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -39,6 +40,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.io.InputStream;
+
+import static android.widget.Toast.LENGTH_LONG;
+import static android.widget.Toast.LENGTH_SHORT;
 
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
@@ -77,8 +81,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         button_next.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v) {
-                Intent intent =  new Intent (MapsActivity.this, ListActivity.class);
-                startActivity(intent);
+
+                LatLng zoom_2 = new LatLng(40.754344, -73.981207);
+                mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom_2, 18));
+
 
             }
 
@@ -88,9 +94,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         button_flag.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick (View v) {
-                LatLng zoom = new LatLng(40.754344, -73.981207);
+                LatLng zoom = new LatLng(40.753760, -73.979436);
 
                 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(zoom, 18));
+                mMap.addMarker(new MarkerOptions().position(zoom).title("Parking Ticket Record").icon(BitmapDescriptorFactory.fromResource(R.drawable.ticket_master)));
+                Toast.makeText(MapsActivity.this, "Your location has been recorded", LENGTH_LONG).show();
+
 
             }
 

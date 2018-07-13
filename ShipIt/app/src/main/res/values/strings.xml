@@ -105,4 +105,5 @@
         "when a user tries to pick up one of cards.\n\n"
     </string>
     <string name="title_activity_maps">Map</string>
+    <string name="ticket_toast">Location has been flagged</string>
 </resources>
