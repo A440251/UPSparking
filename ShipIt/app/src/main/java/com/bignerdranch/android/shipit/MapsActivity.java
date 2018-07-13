@@ -34,6 +34,7 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.io.InputStream;
 
+
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -72,10 +73,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng nyc = new LatLng(40.752220, -73.979976);
         LatLng views = new LatLng(40.754344,-73.981207);
 
-       // mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
-       // LatLng destination = new LatLng(40.7536510007, -73.9790731694);
+        // mMap.addMarker(new MarkerOptions().position(nyc).title("Route A to B "));
+        // LatLng destination = new LatLng(40.7536510007, -73.9790731694);
         mMap.addMarker(new MarkerOptions().position(nyc).title("Package 1").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
-       // mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
+        // mMap.addPolyline(new PolylineOptions().add(nyc, destination).width(10).color(Color.RED));
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(views,16));
         mClusterManager = new ClusterManager<MyItem>(this, mMap);
         mMap.setOnCameraIdleListener(mClusterManager);
@@ -100,7 +101,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng leg5 = new LatLng(40.7555096, -73.98361179999999);
         mMap.addPolyline(new PolylineOptions().add(leg4, leg5).width(10).color(Color.RED));
 
-
         LatLng leg6 = new LatLng(40.7573938, -73.98225029999999);
         mMap.addPolyline(new PolylineOptions().add(leg5, leg6).width(10).color(Color.RED));
 
@@ -108,16 +108,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LatLng leg7 = new LatLng(40.7569175, -73.98112180000001);
         mMap.addPolyline(new PolylineOptions().add(leg6, leg7).width(10).color(Color.RED));
 
-
+        addSpots();
     }
 
     private void addItems() {
 
         // Set some lat/lng coordinates to start with.
-     //   double lat = 40.752230;
-       // double lng = -73.979976;
+        //   double lat = 40.752230;
+        // double lng = -73.979976;
         //LatLng package_1= new LatLng(40.753692, -73.978897);
-      //  mMap.addMarker(new MarkerOptions().position(package_1).title("Package 1").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
+        //  mMap.addMarker(new MarkerOptions().position(package_1).title("Package 1").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
 
         LatLng package_2= new LatLng(40.753484, -73.978770);
         mMap.addMarker(new MarkerOptions().position(package_2).title("Package 2").icon(BitmapDescriptorFactory.fromResource(R.drawable.package_2)));
@@ -130,18 +130,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 
+    }
 
-        /**
-        // Add ten cluster items in close proximity, for purposes of this example.
-        for (int i = 1; i < 4; i++) {
-            double offset = i / 800d;
-            lat = lat + offset;
-            lng = lng + offset;
-            MyItem offsetItem = new MyItem(lat, lng,"hello","word");
-            mClusterManager.addItem(offsetItem);
-        }
+    private void addSpots() {
+        LatLng spot_1= new LatLng(40.7536510007, -73.9790731694);
+        mMap.addMarker(new MarkerOptions().position(spot_1).title("parking spot 2 ").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
 
-         **/
+        LatLng spot_2= new LatLng(40.7535520359, -73.9790867782);
+        mMap.addMarker(new MarkerOptions().position(spot_2).title("parking spot 2 ").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
+
+        LatLng spot_3= new LatLng(40.7537125871, -73.9794677963);
+        mMap.addMarker(new MarkerOptions().position(spot_3).title("parking spot 2 ").icon(BitmapDescriptorFactory.fromResource(R.drawable.available)));
     }
 
 }
