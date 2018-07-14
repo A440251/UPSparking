@@ -7,7 +7,7 @@ A parking application made for UPS Hackathon 2018<br/>
 1. Clone or download the repository
 2. Open "google_maps_api.xml" and replace placeholder text for API creditials with your generated keys for google
 ```java
-#Google Maps API information
+# Google Maps API information
 access_key = "ACCESS_KEY"
 ```
 
