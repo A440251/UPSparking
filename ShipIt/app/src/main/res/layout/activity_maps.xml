@@ -63,7 +63,5 @@
             android:textColor="#FCB900"
             android:background="#aaa" />
 
-
-
     </RadioGroup>
 </FrameLayout>
