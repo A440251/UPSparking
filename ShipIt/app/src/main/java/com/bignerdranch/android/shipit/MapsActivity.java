@@ -249,13 +249,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     }
     private void moveCircle(final Circle circle[], final int index, final int delay){
         new android.os.Handler().postDelayed(
-                    new Runnable() {
-                        public void run() {
-                            circle[index].setVisible(false);
-                            circle[index + 1].setVisible(true);
-                        }
-                    },
-                    delay);
+                new Runnable() {
+                    public void run() {
+                        circle[index].setVisible(false);
+                        circle[index + 1].setVisible(true);
+                    }
+                },
+                delay);
     }
 
 
@@ -332,6 +332,3 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
 }
-
-
-
