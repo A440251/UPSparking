@@ -1,4 +1,4 @@
-# UPSparking
+# UPS parking
 A parking application made for UPS Hackathon 2018<br/>
 
 ![](https://img.shields.io/badge/Release-V1.1-blue.svg) ![](https://img.shields.io/badge/License-MIT-orange.svg)
