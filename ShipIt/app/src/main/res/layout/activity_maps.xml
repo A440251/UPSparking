@@ -6,7 +6,6 @@
              android:layout_height="match_parent"
              tools:context=".MapsActivity" >
     <fragment xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:map="http://schemas.android.com/apk/res-auto"
               xmlns:tools="http://schemas.android.com/tools"
               android:id="@+id/map"
               android:name="com.google.android.gms.maps.SupportMapFragment"
@@ -52,9 +51,7 @@
             android:text="Next"
             android:layout_height="match_parent"
             android:gravity="center_horizontal|center_vertical"
-            android:layout_weight="1"
-
-            />
+            android:layout_weight="1"/>
 
         <View
             android:id="@+id/VerticalLine_2"
@@ -62,7 +59,6 @@
             android:layout_height="match_parent"
             android:textColor="#FCB900"
             android:background="#aaa" />
-
 
 
     </RadioGroup>
